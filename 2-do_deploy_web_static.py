@@ -24,7 +24,6 @@ def do_deploy(archive_path):
         run(
             "ln -s /data/web_static/releases/"
             + name + "/web_static /data/web_static/current")
-        sudo("service nginx restart")
         return True
     else:
         return False
