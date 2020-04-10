@@ -11,7 +11,7 @@ env.hosts = [
 
 def do_deploy(archive_path):
     """Deploy"""
-    if os.path.exists(archive_path):
+    if os.path.isfile(archive_path):
         nameFile = archive_path.split('/')[1]
         p1 = put(archive_path, "/tmp/")
         name = os.path.splitext(nameFile)[0]
