@@ -22,6 +22,11 @@ def do_deploy(archive_path):
         run("rm /tmp/" + name + ".tgz")
         run("rm -rf /data/web_static/current")
         run(
+            "mv /data/web_static/releases/"
+            + name
+            + "/web_static/* /data/web_static/releases/"
+            + name + "/")
+        run(
             "ln -s /data/web_static/releases/"
             + name + " /data/web_static/current")
         print("New version deployed!")
