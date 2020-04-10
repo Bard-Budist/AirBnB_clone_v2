@@ -13,28 +13,29 @@ def do_deploy(archive_path):
     """Deploy"""
     if os.path.exists(archive_path):
         nameFile = archive_path.split('/')[1]
-        put(archive_path, "/tmp/")
+        p1 = put(archive_path, "/tmp/")
         name = os.path.splitext(nameFile)[0]
-        sudo("mkdir -p /data/web_static/releases/" + name)
-        sudo(
+        p2 = sudo("mkdir -p /data/web_static/releases/" + name)
+        p3 = sudo(
             "tar -xzf /tmp/" +
             name + ".tgz -C /data/web_static/releases/"
             + name)
-        sudo("rm /tmp/" + name + ".tgz")
-        sudo(
+        p4 = sudo("rm /tmp/" + name + ".tgz")
+        p5 = sudo(
             "mv -f /data/web_static/releases/"
             + name
             + "/web_static/* /data/web_static/releases/"
             + name)
-        sudo(
+        p6 = sudo(
             "rm -rf /data/web_static/releases/"
             + name
             + "/web_static")
-        sudo("rm -rf /data/web_static/current")
-        sudo(
+        p7 = sudo("rm -rf /data/web_static/current")
+        p8 = sudo(
             "ln -s /data/web_static/releases/"
             + name + " /data/web_static/current")
         print("New version deployed!")
+        ops = [p1, p2, p3, p4, p5, p6, p7, p8]
         return True
     else:
         return False
