@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def task0():
+    """Task 0"""
     return "Hello HBNB!"
 
 
