@@ -33,9 +33,9 @@ class DBStorage:
         class_list = [User, State, City, Amenity, Place, Review]
         all_dict = {}
         if cls is not None:
-            class_obj = eval(cls)
+            class_obj = cls
             for item in self.__session.query(class_obj):
-                all_dict[cls + "." + item.id] = item
+                all_dict[cls.__name__ + "." + item.id] = item
         else:
             for table in class_list:
                 for item in self.__session.query(table):
@@ -58,3 +58,9 @@ class DBStorage:
         factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(factory)
         self.__session = Session()
+
+    def close(self):
+        """
+        Close session
+        """
+        self.__session.close()

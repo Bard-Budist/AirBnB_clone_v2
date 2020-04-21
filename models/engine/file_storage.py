@@ -70,3 +70,10 @@ class FileStorage:
         if obj is not None:
             name = obj.__class__.__name__ + "." + obj.id
             del(FileStorage.__objects[name])
+
+    def close(self):
+        """
+        Close
+        """
+        self.reload()
+
