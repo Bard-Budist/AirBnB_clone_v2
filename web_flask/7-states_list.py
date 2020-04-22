@@ -18,7 +18,7 @@ def task7():
     return render_template(
             "7-states_list.html",
             state=storage.all(State),
-            name_class=State.__name__)
+            name_class="States")
 
 
 if __name__ == "__main__":
