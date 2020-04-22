@@ -7,6 +7,7 @@ from flask import render_template
 
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
 def task0():
     return "Hello HBNB!"
